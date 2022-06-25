@@ -1,3 +1,9 @@
+<?php
+include'dbconnect.php';
+$tgl=date('Y-m-d');
+session_start();
+if(isset($_SESSION['session'])){
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -431,3 +437,12 @@
 </body>
 
 </html>
+<?php
+}
+else {
+	echo "<script>
+		alert('Login First!');
+	</script>";
+	header('location:login.php');
+}
+?>

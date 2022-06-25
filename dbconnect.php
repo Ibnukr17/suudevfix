@@ -1,12 +1,14 @@
 <?php
-$db="sudev";
-$hostname="localhost";
-$username = "root";
+// include '../dbconnect.php';
+$server = "localhost";
+$user = "root";
 $password = "";
+$nama_database = "sudev";
 
-$connect = mysqli_connect($hostname,$username, $password, $db);
- if($connect){
-      //
- }else{
-     echo 'Error in connection';
- }
+$connect = mysqli_connect($server, $user, $password, $nama_database);
+
+if( !$connect ){
+    die("Failed to login: " . mysqli_connect_error());
+}
+
+?>

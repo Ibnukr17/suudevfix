@@ -1,7 +1,10 @@
 <!--Get Data-->
 <?php
 include 'dbconnect.php';
-$query = "SELECT distinct code FROM expense ORDER BY code ASC";
+$tgl=date('Y-m-d');
+session_start();
+if(isset($_SESSION['session'])){
+$query = "SELECT distinct code FROM expense ORDER BY id ASC";
 $result = mysqli_query($connect, $query);
 ?>
 
@@ -210,7 +213,7 @@ $result = mysqli_query($connect, $query);
             <div class="row content">
                 <div class="col-md-7 mx-auto">
                     <div class=" text-center" style="padding-top:20px ;">
-                        <h1>New Budget Plan</h1>
+                        <h1>New Expenses</h1>
                     </div>
                     <div class="card text-center border-rounded">
                         <div class="card-body">
@@ -244,13 +247,13 @@ $result = mysqli_query($connect, $query);
                                     <input id="amount" type="integer" name="amount" class="form-control" placeholder="amount" required="required" data-error="Initial Amount is required.">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <select id="code" name="code" class="form-control">
-                                        <option value="">Source </option>
+                                    <select id="source" name="source" class="form-control">
+                                        <option>Source </option>
                                         <?php
-                                        $query = "SELECT distinct code, source FROM budget ORDER BY code ASC";
+                                        $query = "SELECT distinct source FROM budget ORDER BY source ASC";
                                         $result = mysqli_query($connect, $query);
                                         while ($row = mysqli_fetch_array($result)) {
-                                            echo '<option value="' . $row["code"] . '">';
+                                            echo '<option value="' . $row["source"] . '">';
                                             if ($row['source'] == 'Family') {
                                                 echo "Family";
                                             } else if ($row['source'] == 'Relative') {
@@ -266,17 +269,52 @@ $result = mysqli_query($connect, $query);
                                     </select>
                                 </div>
                                 <div class="form-group col-md-10">
-                                    <textarea id="comment" name="comment" class="form-control" placeholder="write a comment"></textarea>
-                                    <div class="message">Specify The Budget Purpose Or A Reason!</div>
+                                    <textarea type="text" name="comment" id="comment" class="form-control" placeholder="write a comment"></textarea>
+                                    <div class="message">Specify The Expenses Purpose Or A Reason!</div>
                                 </div>
                                 <br>
                                 <div class="col-md-10">
                                     <input type="hidden" name="specification" value="<?php echo $specification; ?>">
                                     <input type="hidden" name="source" value="<?php echo $source; ?>">
-                                    <button type="submit" class="btn btn-warning">Submit</button>
+                                    <button type="submit" class="btn btn-warning" id="submit">Submit</button>
                                 </div>
                             </form>
 
+                            <?php
+                            include "dbconnect.php";
+                            if (isset($_POST["submit"])) {
+                                $code = $_POST['code'];
+                                //specification from expense
+                                $query = "SELECT specification FROM expense WHERE code='$code'";
+                                $result = mysqli_query($connect, $query);
+                                if ($row = mysqli_fetch_array($result)) {
+                                    $specification = $row['specification'];
+                                }
+                                $date = $_POST["date"];
+                                $amount = $_POST["amount"];
+                                // source from budget
+
+                                $query = "SELECT source FROM budget";
+                                $result = mysqli_query($connect, $query);
+                                if ($row = mysqli_fetch_array($result)) {
+                                    $source = $row["source"];
+                                }
+                                $message = $_POST["comment"];
+                                $query = "INSERT INTO budget ('code', 'specification', 'date', 'amount', 'source', 'comment') VALUES ('$code','$specification','$date', '$amount','$source', '$message')";
+                                $result = mysqli_query($connect, $query);
+                                if ($result) {
+                                    echo '<p>You have entered </p>';
+                                    echo $code;
+                                    echo $specification;
+                                    echo $date;
+                                    echo $amount;
+                                    echo $source;
+                                    echo $comment;
+                                } else {
+                                    echo "Failed to connect!" . mysqli_connect_error();
+                                }
+                              }
+                            ?>
                             <div id="response">
                             </div>
                         </div>
@@ -285,7 +323,73 @@ $result = mysqli_query($connect, $query);
             </div>
         </main>
     </div>
+    <!-- BOOTSTRAP 4 -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
 
 </body>
 
 </html>
+<script>
+    $(document).ready(function() {
+        $('#submit').click(function() {
+            $('#submit').prop('disabled', true);
+            var code = $('#code').val();
+            var date = $('#date').val();
+            var amount = $('#amount').val();
+            var source = $('#source').val();
+            var comment = $('#comment').val();
+
+            if (code == '' && specification == '' && amount == '' && source == '' &&
+                comment == '') {
+                $('#response').html('<span class="text-danger">All Fields are required</span>')
+                $('#submit').prop('disabled', false);
+            } else {
+                $.ajax({
+                    url: 'insertExpense.php',
+                    method: 'post',
+                    data: $('#expense-form').serialize(),
+                    success: function(data) {
+
+                        $('form').trigger("reset");
+                        $('#response').fadeIn().html(data);
+                        $('#submit').prop("disabled", false);
+                        setTimeout(function() {
+                            $('#response').fadeOut("slow");
+                        }, 8000);
+
+                    }
+                }); // ajax
+
+            } // if
+
+
+        });
+
+    }); // document
+</script>
+<?php
+}
+else {
+	echo "<script>
+		alert('Login First!');
+	</script>";
+	header('location:login.php');
+}
+?>

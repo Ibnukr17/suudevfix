@@ -31,7 +31,7 @@
                             <p class="text-center small">Enter your personal details to create account</p>
                         </div>
 
-                        <form class="row g-3 needs-validation" novalidate>
+                        <form class="row g-3 needs-validation" method="POST" action="check_register.php">
                             <div class="col-12">
                                 <label for="yourName" class="form-label">Your Name</label>
                                 <input type="text" name="name" class="form-control" id="yourName" required>
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                                <button class="btn btn-primary w-100" type="submit" name="register">Create Account</button>
                             </div>
                             <div class="col-12">
                                 <p class="small mb-0">Already have an account? <a href="login.php">Log in</a></p>

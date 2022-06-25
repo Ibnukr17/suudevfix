@@ -28,36 +28,33 @@
                             <p class="text-center small">Enter your username & password to login</p>
                         </div>
 
-                        <form class="row g-3" method="post">
+                        <form class="row g-3" method="post" action="check_login.php">
                             <div class="col-12">
                                 <label for="username" class="form-label">Username</label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                    <input type="text" name="username" class="form-control" id="username">
+                                    <input type="text" name="user" class="form-control" >
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" id="password">
+                                <input type="password" name="pass" class="form-control" >
                             </div>
 
                             <div class="col-12">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                                    <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe" required>
                                     <label class="form-check-label" for="rememberMe">Remember me</label>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100" id="submit" type="submit">Login</button>
+                                <button class="btn btn-primary w-100" id="submit" type="submit" name="submit">Login</button>
                             </div>
                             <div class="col-12">
                                 <p class="small mb-0">Don't have account? <a href="register.php">Create an account</a></p>
                             </div>
                         </form>
-                       <div class="response">
-
-                       </div>
                     </div>
                 </div>
 
@@ -88,38 +85,4 @@
 </body>
 
 </html>
-
-<script type="text/javascript">
-    function do_login() {
-        var username = $("#username").val();
-        var password = $("#password").val();
-        if (username != "" && password != "") {
-            $("#expense_form").css({
-                "display": "block"
-            });
-            $.ajax({
-                type: 'post',
-                url: 'do_login.php',
-                data: {
-                    do_login: "do_login",
-                    username: username,
-                    password: password
-                },
-                success: function(response) {
-                    if (response == "success") {
-                        window.location.href = "dashboard.php";
-                    } else {
-                        $("#loading_spinner").css({
-                            "display": "none"
-                        });
-                        alert("Incorrect username and password!");
-                    }
-                }
-            });
-        } else {
-            alert("Please Fill All The Details");
-        }
-
-        return false;
-    }
 </script>
