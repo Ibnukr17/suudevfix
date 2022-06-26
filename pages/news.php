@@ -142,41 +142,7 @@
 
  <body>
      <div class="container">
-         <aside>
-             <div class="top">
-                 <div class="logo">
-                     <img src="assets/img/logo.png" alt="logo">
-                 </div>
-             </div>
-             <div class="sidebar">
-                 <a href="dashboard.php">
-                     <span>
-                         <h5 class=" fas fa-bars"> HOME</h5>
-                     </span>
-                 </a>
-                 <a href="news.php" class="active">
-                     <span class="fas nav-link">
-                         <h5>NEWS</h5>
-                     </span>
-                 </a>
-                 <a href="about.php">
-                     <span class="fas">
-                         <h5>ABOUT US</h5>
-                     </span>
-                 </a>
-                 <a href="contact.php">
-                     <span class="fas">
-                         <h5>CONTACT</h5>
-                     </span>
-                 </a>
-                 <a href="land.php">
-                     <span class="fas">
-                         <h6>LOGOUT</h6>
-                     </span>
-                 </a>
-             </div>
-         </aside>
-         <!--END OF ASIDE -->
+       
          <main>
              <div class="container-fluid mt-5">
                  <div class="row">

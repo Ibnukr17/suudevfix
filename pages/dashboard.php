@@ -1,11 +1,3 @@
-<?php
-include'dbconnect.php';
-$tgl=date('Y-m-d');
-session_start();
-if(isset($_SESSION['session'])){
-?>
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -114,47 +106,13 @@ if(isset($_SESSION['session'])){
 
 <body>
     <div class="container">
-        <aside>
-            <div class="top">
-                <div class="logo">
-                    <img src="assets/img/logo.png" alt="logo">
-                </div>
-            </div>
-            <div class="sidebar">
-                <a href="dashboard.php" class="active">
-                    <span>
-                        <h5 class=" fas fa-bars"> HOME</h5>
-                    </span>
-                </a>
-                <a href="news.php">
-                    <span class="fas nav-link">
-                        <h5>NEWS</h5>
-                    </span>
-                </a>
-                <a href="about.php">
-                    <span class="fas">
-                        <h5>ABOUT US</h5>
-                    </span>
-                </a>
-                <a href="contact.php">
-                    <span class="fas">
-                        <h5>CONTACT</h5>
-                    </span>
-                </a>
-                <a href="land.php">
-                    <span class="fas">
-                        <h6>LOGOUT</h6>
-                    </span>
-                </a>
-            </div>
-        </aside>
-        <!--END OF ASIDE -->
         <main>
             <div class=" card-body">
                 <div class="row">
                     <div class="float-right profile">
                         <img src="assets/img/profile-img.jpg" alt="Profile picturer" style="width:2rem; border-radius:45%">
-                        <h6>ibnu@gmail.com</h6>
+                        ibnu@gmail.com
+                        
                     </div>
                 </div>
                 <div class="card top-card">
@@ -166,10 +124,10 @@ if(isset($_SESSION['session'])){
                             <div class=" card inner-card" style="background-color: #00C897;">
                                 <div class="card-body" style="margin: 10px; padding-right: 20px;">
                                     <div class="row text-uppercase font-italic">
-                                        <h5>Recently </h5>
+                                        <h5>Recently</h5>
                                         <div style="padding-left:100px ;">
                                             <td class="table-light">
-                                                <!-- Trigger the modal with a button -->
+                                            <!-- Trigger the modal with a button -->
                                                 <a href="NewBudget.php" data-toggle="modal" data-target="#myModal" style="color:white; text-decoration:none;">SEE ALL Budget <i class="fa fa-angle-double-right"></i> </a>
                                             </td>
                                             <!-- Modal -->
@@ -431,18 +389,5 @@ if(isset($_SESSION['session'])){
                 </div>
             </div>
         </main>
-
     </div>
-
 </body>
-
-</html>
-<?php
-}
-else {
-	echo "<script>
-		alert('Login First!');
-	</script>";
-	header('location:login.php');
-}
-?>

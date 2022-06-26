@@ -58,7 +58,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-warning"><a href="land.php">Back</a></button>
+                <button class="btn btn-warning"><a href="pages/land.php">Back</a></button>
             </div>
         </div>
     </div>

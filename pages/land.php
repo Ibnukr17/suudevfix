@@ -52,10 +52,10 @@
                             <a class="nav-link" href="contact.php">CONTACT</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="login.php">LOGIN</a>
+                            <a class="nav-link" href="../login.php">LOGIN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="register.php">REGISTER</a>
+                            <a class="nav-link" href="../register.php">REGISTER</a>
                         </li>
                     </ul>
                 </nav>

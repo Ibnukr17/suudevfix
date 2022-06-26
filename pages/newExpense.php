@@ -1,9 +1,5 @@
 <!--Get Data-->
 <?php
-include 'dbconnect.php';
-$tgl=date('Y-m-d');
-session_start();
-if(isset($_SESSION['session'])){
 $query = "SELECT distinct code FROM expense ORDER BY id ASC";
 $result = mysqli_query($connect, $query);
 ?>
@@ -174,41 +170,6 @@ $result = mysqli_query($connect, $query);
 
 <body>
     <div class="container">
-        <aside>
-            <div class="top">
-                <div class="logo">
-                    <img src="assets/img/logo.png" alt="logo">
-                </div>
-            </div>
-            <div class="sidebar">
-                <a href="dashboard.php" class="active">
-                    <span>
-                        <h5 class=" fas fa-bars"> HOME</h5>
-                    </span>
-                </a>
-                <a href="news.php">
-                    <span class="fas nav-link">
-                        <h5>NEWS</h5>
-                    </span>
-                </a>
-                <a href="about.php">
-                    <span class="fas">
-                        <h5>ABOUT US</h5>
-                    </span>
-                </a>
-                <a href="contact.php">
-                    <span class="fas">
-                        <h5>CONTACT</h5>
-                    </span>
-                </a>
-                <a href="land.php">
-                    <span class="fas">
-                        <h6>LOGOUT</h6>
-                    </span>
-                </a>
-            </div>
-        </aside>
-        <!--END OF ASIDE -->
         <main>
             <div class="row content">
                 <div class="col-md-7 mx-auto">
@@ -384,12 +345,3 @@ $result = mysqli_query($connect, $query);
 
     }); // document
 </script>
-<?php
-}
-else {
-	echo "<script>
-		alert('Login First!');
-	</script>";
-	header('location:login.php');
-}
-?>

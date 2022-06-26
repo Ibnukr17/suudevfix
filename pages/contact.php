@@ -1,6 +1,4 @@
 <!-- without session -->
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -123,41 +121,6 @@
 
 <body>
   <div class="container">
-    <aside>
-      <div class="top">
-        <div class="logo">
-          <img src="assets/img/logo.png" alt="logo">
-        </div>
-      </div>
-      <div class="sidebar">
-        <a href="dashboard.php">
-          <span>
-            <h5 class=" fas fa-bars"> HOME</h5>
-          </span>
-        </a>
-        <a href="news.php">
-          <span class="fas nav-link">
-            <h5>NEWS</h5>
-          </span>
-        </a>
-        <a href="about.php">
-          <span class="fas">
-            <h5>ABOUT US</h5>
-          </span>
-        </a>
-        <a href="contact.php">
-          <span class="fas" class="active">
-            <h5>CONTACT</h5>
-          </span>
-        </a>
-        <a href="land.php">
-          <span class="fas">
-            <h6>LOGOUT</h6>
-          </span>
-        </a>
-      </div>
-    </aside>
-    <!--END OF ASIDE -->
     <main>
       <div class="row justify-content-center">
         <div class="col-md-12" style="margin:0px ;">
@@ -249,33 +212,6 @@
     </main>
   </div>
 
-</body>
-
-</html>
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <title>Contact Form 02</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-
-</head>
-
-<body>
-
-
-  <script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.validate.min.js"></script>
-  <script src="js/main.js"></script>
 </body>
 
 </html>

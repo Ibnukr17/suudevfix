@@ -16,7 +16,7 @@ include "dbconnect.php";
 				$_SESSION['session'] = $data_admin['name'];
 				
 				echo "<script>alert('Success to Log In');</script>";
-				echo "<meta http-equiv='refresh' content='0; url=dashboard.php?user=$sesi'>";
+				echo "<meta http-equiv='refresh' content='0; url=index.php?user=$sesi'>";
 			} //if there is a data
 
 			else

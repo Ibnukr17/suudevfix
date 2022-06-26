@@ -1,12 +1,8 @@
 <!-- without session -->
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sufinance Dashboard!</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
@@ -131,41 +127,7 @@
 
 <body>
     <div class="container">
-        <aside>
-            <div class="top">
-                <div class="logo">
-                    <img src="assets/img/logo.png" alt="logo">
-                </div>
-            </div>
-            <div class="sidebar">
-                <a href="">
-                    <span>
-                        <h5 class=" fas fa-bars"> HOME</h5>
-                    </span>
-                </a>
-                <a href="news.php">
-                    <span class="fas nav-link">
-                        <h5>NEWS</h5>
-                    </span>
-                </a>
-                <a href="about.php" class="active">
-                    <span class="fas">
-                        <h5>ABOUT US</h5>
-                    </span>
-                </a>
-                <a href="contact.php">
-                    <span class="fas">
-                        <h5>CONTACT</h5>
-                    </span>
-                </a>
-                <a href="land.php">
-                    <span class="fas">
-                        <h6>LOGOUT</h6>
-                    </span>
-                </a>
-            </div>
-        </aside>
-        <!--END OF ASIDE -->
+   
         <main>
             <div class="container-fluid">
                 <div class="row content bg-white py-5">
@@ -270,7 +232,4 @@
             </div>
         </main>
     </div>
-
 </body>
-
-</html>

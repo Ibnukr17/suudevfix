@@ -43,16 +43,9 @@ if(isset($_SESSION['session'])){
             height: 100vh;
             font-family: poppins, sans-serif;
             font-size: 0.88rem;
-            background-color: #00C897;
+            background-color: #00c897;
             user-select: none;
             overflow-x: hidden;
-        }
-
-        main {
-            background-color: white;
-            width: 81.5vw;
-            margin-top: 4rem;
-            margin-bottom: 1.5rem;
         }
 
         .top-card {
@@ -121,7 +114,7 @@ if(isset($_SESSION['session'])){
                 </div>
             </div>
             <div class="sidebar">
-                <a href="dashboard.php" class="active">
+                <a href="index.php?p=dashboard" class="active">
                     <span>
                         <h5 class=" fas fa-bars"> HOME</h5>
                     </span>
@@ -149,38 +142,31 @@ if(isset($_SESSION['session'])){
             </div>
         </aside>
         <!--END OF ASIDE -->      
-    </div>
+
+    
+   
+
     <!-- dynamic pages -->
-    <div id="content-container">
-		<div class="container">
-		<div class="row"><br/><br/><br/>
-			<div class="col-md-10 col-md-offset-1" style="background-image:url('../asanoer-background.jpg')">
-				<div class="col-md-4 col-md-offset-4">
-					<div class="panel panel-warning login-panel" style="background-color:rgba(255, 255, 255, 0.6);position:relative;">
-						<div class="panel-footer">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-    </div>
-		<?php
-			$pages_dir='pages';
-			if(!empty($_GET['p'])){
-				$pages=scandir($pages_dir,0);
-				unset($pages[0],$pages[1]);
-				$p=$_GET['p'];
-				if(in_array($p.'.php',$pages)){
-					include($pages_dir.'/'.$p.'.php');
-				}else{
-					echo'Halaman Tidak Ditemukan';
-				}
-			}else{
-				include($pages_dir.'/beranda.php');
-			}
-		?>
-	</div>
+        <div id="content-container">
+            <?php 
+                $pages_dir='pages';
+                if(!empty($_GET['p'])){
+                    $pages=scandir($pages_dir,0);
+                    unset($pages[0],$pages[1]);
+                    $p=$_GET['p'];
+                    if(in_array($p.'.php',$pages)){
+                        include($pages_dir.'/'.$p.'.php');
+                    }else{
+                        echo'Halaman Tidak Ditemukan';
+                    }
+                }else{
+                    include($pages_dir.'/dashboard.php');
+                }
+            ?>
+        </div>
     <!-- end dynamic pages -->
+    </div>
+   
 
 </body>
 
