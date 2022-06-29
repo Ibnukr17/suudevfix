@@ -50,6 +50,15 @@
             margin-bottom: 1.5rem;
         }
 
+        h5 {
+            color: #000000;
+            font-family: poppins, sans-serif;
+        }
+
+        .shadow {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
         .top-card {
             width: 100%;
             padding-left: 20px;
@@ -98,14 +107,15 @@
 <body>
     <div class="container">
         <main>
-            <div class=" card-body">
+            <div class="card-body">
+                <div class="card-title">
+                    <h1 style="text-align:center">DAILY USAGE</h1>
+                </div>
                 <div class="row">
-                    <div class="col-6 " style="padding-left: 60px; ">
-                        <div class="card-title">
-                            <h5 style="text-align:center">DAILY USAGE</h5>
-                        </div>
-                        <div class=" card inner-card">
-                            <div class="card-body" style="margin-left: 10px;">
+                    <div class="col-6 " style="padding:20px 200px 0px 20px">
+
+                        <div class="card inner-card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                            <div class="card-body" style="margin-left: 10px; ">
                                 <div class="col text-uppercase font-italic">
                                     <div class="row">
                                         <div style="padding-left:50px ;">
@@ -144,21 +154,21 @@
                     </div><!-- End Daly Usage -->
                     <div class=" card-body">
                         <div class="row">
-                            <div class="col-6 ">
-                                <div class=" card">
+                            <div class="col-6" style=" padding:0px 15px 0px 20px">
+                                <div class="inner-card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                                     <div class="card-body">
                                         <div class="col text-success">
-                                            <h5>SOURCE INCOME</h5>
+                                            <h5 class="source">SOURCE INCOME</h5>
                                             <div class="text-align-center">
-                                                  <?php
-                                                    $result = mysqli_query($connect, "SELECT source, concat(round((amount * 100)/(SELECT SUM(amount) FROM budget), 1),'%') as amount FROM budget");
-                                                    $row = mysqli_fetch_assoc($result);
-                                                    foreach ($result as $row) {
-                                                        $source = $row['source'];
-                                                        $amount = $row['amount'];
-                                                        echo ("<h6><th> $source <td>  $amount</td> </th> </h6>");
-                                                      }
-                                                    ?>
+                                                <?php
+                                                $result = mysqli_query($connect, "SELECT source, concat(round((amount * 100)/(SELECT SUM(amount) FROM budget), 1),'%') as amount FROM budget");
+                                                $row = mysqli_fetch_assoc($result);
+                                                foreach ($result as $row) {
+                                                    $source = $row['source'];
+                                                    $amount = $row['amount'];
+                                                    echo ("<h6><th> $source <td>  $amount</td> </th> </h6>");
+                                                }
+                                                ?>
                                             </div>
                                             <div class="d-flex aligh-items-right">
                                                 <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
@@ -201,8 +211,8 @@
                                     <li><a class="dropdown-item" href="#">This Year</a></li>
                                 </ul>
                             </div>
-                            <div class="card-body">
-                                <h5 class="fa fa-bar-chart" style="font-size:24px" class="card-title"> Analysis</h5>
+                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                                <h5 class="fa fa-bar-chart" style="font-size:24px" class="card-title"> <span style="font-family: poppins, sans-serif;">Analysis</span></h5>
                                 <!-- Line Chart -->
                                 <canvas id="reportsChart" style="width:50%;max-width:600px; background-color:#00C897; border-radius: 2rem;"></canvas>
                                 <script>
