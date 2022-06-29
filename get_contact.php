@@ -10,7 +10,7 @@ if (isset($_POST['send_contact'])) {
         message = '$_POST[message]'");
 
     echo '<script type ="text/JavaScript">';
-    echo 'alert("Selamat Belajar PHP")';
+    echo 'alert("Message already send!")';
     echo '</script>';
     echo "<meta http-equiv='refresh' content='0; url=index.php?p=contact'>";
     // echo "Message already send!";
