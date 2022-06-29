@@ -130,11 +130,11 @@
                 <div class="contact-wrap w-100 p-md-5 p-4">
                   <div id="form-message-warning" class="mb-4"></div>
                   <div id="form-message-success" class="mb-4">Your message was sent, thank you!</div>
-                  <form method="POST" id="contactForm" name="contactForm" class="contactForm">
+                  <form method="POST" action="get_contact.php" id="contactForm" name="contactForm" class="contactForm">
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label class="label" for="firstname">Full Name</label>
+                          <label class="label" for="firstname">First Name</label>
                           <input type="text" class="form-control" name="firstname" id="firstname" placeholder="firstname" />
                         </div>
                       </div>
@@ -166,7 +166,7 @@
 
                       <div class="col-md-12">
                         <div class="form-group">
-                          <input type="submit" value="Send Message" class="btn btn-primary" />
+                          <input type="submit" value="Send Message" name="send_contact" class="btn btn-primary" />
                           <div class="submitting"></div>
                         </div>
                       </div>
